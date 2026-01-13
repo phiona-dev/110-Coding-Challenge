@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>DOM Manipulation</h1>
+        <ul id="my-list">
+            <li>Books</li>
+            <li>Pens</li>
+            <li>Pencils</li>
+        </ul>
+        <p>Click to add another item to the list: </p>
+        <button onClick="addItem()">Add</button>
+
+        <script>
+            function addItem() {
+                const newItem = document.createElement("li");
+                newItem.textContent = "school"
+                document.getElementById("my-list").appendChild(newItem)
+            }
+        </script>
+    </body>
+</html>
