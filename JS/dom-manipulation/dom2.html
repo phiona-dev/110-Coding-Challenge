@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1 id="title">DOM Manipulation</h1>
+        <button id="btn">Click me</button>
+        <ul id="my-list">
+            <li>love</li>
+            <li>Money</li>
+        </ul>
+
+        <script>
+            const btn = document.getElementById("btn");
+            const title = document.getElementById("title");
+            const myList = document.getElementById("my-list")
+
+            btn.addEventListener("click", () => {
+                title.textContent = "Page Changed!";
+                document.body.style.backgroundColor = "#e6f8ff";
+
+                const newItem = document.createElement("li");
+                newItem.textContent = "school";
+                myList.appendChild(newItem)
+            })
+        </script>
+    </body>
+</html>
