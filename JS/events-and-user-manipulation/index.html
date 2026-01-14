@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Events and user manipulation</h1>
+        <form id="my-form">
+            <label>Enter text: </label>
+            <input type="text" id="input"/>
+            <button type="submit">Add</button>
+        </form>
+        <div>
+            <ul id="page-text"></ul>
+        </div>
+
+        <script>
+            const pageText = document.getElementById("page-text");
+            const myForm = document.getElementById("my-form")
+
+            myForm.addEventListener("submit", (e) => {
+                e.preventDefault()
+                
+                const inputValue = document.getElementById("input").value;
+                const pageTextItems = document.createElement("li");
+
+                pageTextItems.textContent = inputValue;
+                pageText.appendChild(pageTextItems)
+
+                myForm.reset();
+            })
+        </script>
+    </body>
+</html>
