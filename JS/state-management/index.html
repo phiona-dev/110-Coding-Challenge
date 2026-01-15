@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>State Management</h1>
+        <h3>To do List</h3>
+        <div>
+            <ul id="todo-list"></ul>
+        </div>
+
+        <form id="todo-form">
+            <label>Enter new task: </label>
+            <input type="text" id="input"/>
+            <button type="submit">Add task</button>
+        </form>
+        
+        <script>
+
+            let todos = JSON.parse(localStorage.getItem("todos")) || [
+                {
+                    id: 1,
+                    text: "Buy milk"
+                },
+                {
+                    id: 2,
+                    text: "Do Homework"
+                }
+            ];
+            function renderItems() {
+                const todoList = document.getElementById("todo-list");
+                todoList.innerHTML = "";
+                todos.forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item.text;
+
+                    const editbtn = document.createElement("button");
+                    editbtn.textContent = "edit"
+
+                    const deletebtn = document.createElement("button")
+                    deletebtn.textContent = "delete";
+
+                    editbtn.addEventListener("click", () => {
+                        editTodo(item.id);
+                    })
+
+                    deletebtn.addEventListener("click", () => {
+                        deleteTodo(item.id)
+                    })
+
+                    li.appendChild(editbtn)
+                    li.appendChild(deletebtn);
+                    todoList.appendChild(li);
+                })
+            }
+            renderItems();
+
+            function editTodo(id) {
+                const oldInputValue = document.getElementById("input").value
+                const newText = prompt("Edit text: ", oldInputValue)
+                todos.text = newText
+                saveTodos();
+                renderItems();
+            }
+
+            function deleteTodo(id) {
+                todos = todos.filter(item => item.id !== id);
+                saveTodos();
+                renderItems()
+            }
+
+            function saveTodos() {
+                localStorage.setItem("todos", JSON.stringify(todos))
+            }
+
+            const formData = document.getElementById("todo-form")
+            formData.addEventListener("submit", (e) => {
+                e.preventDefault();
+                
+                const inputValue = document.getElementById("input").value;
+                
+                todos.push({
+                    id: Date.now(),
+                    text: inputValue
+                })
+
+                saveTodos();
+                renderItems();
+
+                formData.reset()
+            })
+        </script>
+    </body>
+</html>
