@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.to-do {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
