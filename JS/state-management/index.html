@@ -54,11 +54,11 @@
             renderItems();
 
             function editTodo(id) {
-                const oldInputValue = document.getElementById("input").value
-                const newText = prompt("Edit text: ", oldInputValue)
-                todos.text = newText
-                saveTodos();
-                renderItems();
+                const itemToEdit = todos.find(item => item.id === id)
+                const newInput = prompt("Edit Text: ", itemToEdit.text)
+                itemToEdit.text = newInput;
+                saveTodos()
+                renderItems()
             }
 
             function deleteTodo(id) {
