@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Fetch + Basic API Calls</h1>
+        <h2>Random Cat Facts</h2>
+        <button id="btn">Load Cat Facts</button>
+        <div id="page-body"></div>
+        <script>
+            const btn = document.getElementById("btn");
+            const url = "https://catfact.ninja/fact"
+            btn.addEventListener("click", () => {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        const bodyText = document.getElementById("page-body");
+                        bodyText.textContent = data.fact;
+                    })
+                    .catch(error => {
+                        console.log("Error loading data!!!")
+                    })
+            })
+        </script>
+    </body>
+</html>
