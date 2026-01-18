@@ -18,6 +18,10 @@ body{
     cursor: pointer;
 }
 
+#start-btn {
+    margin-left: 80px;
+}
+
 .hidden{
     display: none !important;
 }

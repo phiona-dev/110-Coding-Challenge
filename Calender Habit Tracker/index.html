@@ -13,7 +13,15 @@
         </div>
         <div id="habit-form-screen" class="hidden">
             <h1>Habit form</h1>
-            <button id="habit-form-btn" class="btn">Next</button>
+            <form id="habit-form">
+                <label>Enter your habit</label>
+                <input type="text" id="habit"/>
+                <label>Start Date: </label>
+                <input type="date" id="start-date"/>
+                <label>End date: </label>
+                <input type="date" id="end-date"/>
+                <button type="submit">Add habit</button>
+            </form>
         </div>
         <div id="calendar-screen" class="hidden">
             <h1>Calendar</h1>
