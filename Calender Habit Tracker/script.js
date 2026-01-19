@@ -11,11 +11,6 @@ startbtn.addEventListener("click", () => {
     welcomePage.classList.add("hidden") //force hide
 })
 
-//nextbtn.addEventListener("click", () => {
-  //  habitPage.classList.add("hidden")
-    //calendarPage.classList.remove("hidden")
-//})
-
 const habits = []
 habitForm.addEventListener("submit", (e) => {
     e.preventDefault();
