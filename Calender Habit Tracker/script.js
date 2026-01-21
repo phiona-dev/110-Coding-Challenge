@@ -30,6 +30,15 @@ habitForm.addEventListener("submit", (e) => {
         completedDays: []
     })
     console.log(habits)
+
+    const activeHabit = habits[habits.length - 1]
+    const habitStartDate = new Date(startDateValue)
+    const habitEndDate = new Date(endDateValue)
+    console.log(habitStartDate)
+    console.log(habitEndDate)
+    console.log(activeHabit)
+    console.log(startDateValue)
+
     habitPage.classList.add("hidden")
     calendarPage.classList.remove("hidden")
 
@@ -55,9 +64,17 @@ function renderCalendar(month, year){
         calendarDates.appendChild(blank)
     }
 
+    const today = new Date();
+
     for(let i=1; i<=daysInMonth; i++){
         const day = document.createElement("div")
         day.textContent = i;
+
+        if (
+            i === today.getDate() && year === today.getFullYear() && month === today.getMonth()
+        ) {
+            day.classList.add("current-date")
+        }
         calendarDates.appendChild(day)
     }
 }
