@@ -37,7 +37,7 @@ habitForm.addEventListener("submit", (e) => {
     console.log(habitStartDate)
     console.log(habitEndDate)
     console.log(activeHabit)
-    console.log(startDateValue)
+    //console.log(startDateValue)
 
     habitPage.classList.add("hidden")
     calendarPage.classList.remove("hidden")
@@ -66,6 +66,11 @@ function renderCalendar(month, year){
 
     const today = new Date();
 
+    const activeHabit = habits[habits.length - 1]
+    if(!activeHabit) return;
+    const habitStartDate = new Date(activeHabit.startDate)
+    const habitEndDate = new Date(activeHabit.endDate)
+
     for(let i=1; i<=daysInMonth; i++){
         const day = document.createElement("div")
         day.textContent = i;
@@ -74,6 +79,13 @@ function renderCalendar(month, year){
             i === today.getDate() && year === today.getFullYear() && month === today.getMonth()
         ) {
             day.classList.add("current-date")
+        }
+
+        const calendarDayDate = new Date(year, month, i)
+
+        if (calendarDayDate >= habitStartDate && calendarDayDate <=habitEndDate){
+            day.classList.add("habit-range")
+            console.log(day)
         }
         calendarDates.appendChild(day)
     }
