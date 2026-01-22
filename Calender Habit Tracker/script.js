@@ -111,7 +111,7 @@ function renderCalendar(month, year){
                 if(!exist){
                     activeHabit.completedDays.push(dateToString)//add
                 } else {
-                    activeHabit.completedDays.filter(date => date !== dateToString)//remove
+                    activeHabit.completedDays = activeHabit.completedDays.filter(date => date !== dateToString)//remove
                 }
                 renderCalendar(currentMonth, currentYear)
                 console.log(activeHabit.completedDays)
