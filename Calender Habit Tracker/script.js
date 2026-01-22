@@ -104,13 +104,38 @@ function renderCalendar(month, year){
 
         if (calendarDayDate >= habitStartDate && calendarDayDate <=habitEndDate){
             day.classList.add("habit-range")
-            //const dateToString = calendarDayDate.toISOString().split("T")[0]
+            day.addEventListener("click", () => {
+                alert("Day within habit range has been clicked")
+                const dateToString = calendarDayDate.toISOString().split("T")[0]
+                const exist = activeHabit.completedDays.includes(dateToString)
+                if(!exist){
+                    activeHabit.completedDays.push(dateToString)//add
+                } else {
+                    activeHabit.completedDays.filter(date => date !== dateToString)//remove
+                }
+                renderCalendar(currentMonth, currentYear)
+                console.log(activeHabit.completedDays)
+            })
+            //if (day !== dateToString)
+            //console.log(dateToString)
             //console.log(dateToString)
         }
 
+
         calendarDates.appendChild(day)
     }
+
 }
+/*activeHabit.completedDays.push(dateToString)
+console.log(activeHabit.completedDays)
+for(i=0; i<=activeHabit.completedDays.length; i++){
+    if (day !== activeHabit.completedDays[i]) {
+        activeHabit.completedDays.shift(day)
+    } else {
+        activeHabit.completedDays.unshift(day)
+    }
+}
+console.log(activeHabit.completedDays)*/
 
 //INITIAL RENDER
 renderCalendar(currentMonth, currentYear)
