@@ -35,8 +35,22 @@ function renderNotes(){
         li.textContent = item.title
         contentDiv.textContent = item.content
 
+        const deletebtn = document.createElement("button")
+        deletebtn.textContent = "Delete"
+
+        deletebtn.addEventListener("click", () => {
+            deleteItem(item.id)
+        })
+
         notesBody.appendChild(li)
         notesBody.appendChild(contentDiv)
+        notesBody.appendChild(deletebtn)
     })
 }
 renderNotes()
+
+function deleteItem(id) {
+    notesArray = notesArray.filter(item => item.id !== id)
+    saveNotes()
+    renderNotes()
+}
