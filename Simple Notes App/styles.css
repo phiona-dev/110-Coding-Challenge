@@ -1,0 +1,28 @@
+#notes-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    margin-top: 40px;
+}
+
+#notes {
+    width: 50%;
+    height: 30vh
+}
+
+#btn {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    border: none;
+}
