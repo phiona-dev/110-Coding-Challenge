@@ -104,9 +104,15 @@ function renderCalendar(month, year){
 
         if (calendarDayDate >= habitStartDate && calendarDayDate <=habitEndDate){
             day.classList.add("habit-range")
+
+            const dateToString = calendarDayDate.toISOString().split("T")[0]
+            const completed = activeHabit.completedDays.includes(dateToString)
+
+            if(completed){
+                day.classList.add("completed-days-styling")
+            }
             day.addEventListener("click", () => {
                 alert("Day within habit range has been clicked")
-                const dateToString = calendarDayDate.toISOString().split("T")[0]
                 const exist = activeHabit.completedDays.includes(dateToString)
                 if(!exist){
                     activeHabit.completedDays.push(dateToString)//add

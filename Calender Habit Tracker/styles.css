@@ -79,3 +79,7 @@ body{
   background-color: #cfe2ff;
   border-radius: 6px;
 }
+
+.completed-days-styling {
+  background-color: antiquewhite;
+}
