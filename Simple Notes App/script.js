@@ -30,10 +30,14 @@ function renderNotes(){
     const notesBody = document.getElementById("notes-body")
     notesBody.innerHTML = ""
     notesArray.forEach(item => {
-        const li = document.createElement("li")
-        const contentDiv = document.createElement("div")
-        li.textContent = item.title
-        contentDiv.textContent = item.content
+        const card = document.createElement("div")
+        card.classList.add("note-card")
+
+        const title = document.createElement("h3")
+        title.textContent = item.title
+
+        const content = document.createElement("p")
+        content.textContent = item.content
 
         const deletebtn = document.createElement("button")
         deletebtn.textContent = "Delete"
@@ -42,9 +46,11 @@ function renderNotes(){
             deleteItem(item.id)
         })
 
-        notesBody.appendChild(li)
-        notesBody.appendChild(contentDiv)
-        notesBody.appendChild(deletebtn)
+        card.appendChild(title)
+        card.appendChild(content)
+        card.appendChild(deletebtn)
+
+        notesBody.appendChild(card)
     })
 }
 renderNotes()

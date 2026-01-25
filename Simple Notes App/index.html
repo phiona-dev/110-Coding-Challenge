@@ -6,14 +6,21 @@
     </head>
     <body>
         <h1 id="title">Simple Notes App</h1>
+
         <form id="notes-form">
             <label>Title</label>
-            <input type="text" id="notes-title"/>
+            <input type="text" id="notes-title" required/>
+
             <label>Notes</label>
-            <textarea id="notes"></textarea>
+            <textarea id="notes" required></textarea>
+
             <button id="btn" type="submit">Submit</button>
         </form>
-        <div id="notes-body"></div>
+
+        <main>
+            <div id="notes-body" class="notes-grid"></div>
+        </main>
+
         <script src="script.js"></script>
     </body>
 </html>
