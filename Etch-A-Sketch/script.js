@@ -1,5 +1,9 @@
+let COLOR = "black";
 const BOX_SIZE = 10;
+let isErasing = false;
 const canvasContainer = document.querySelector(".canvas-container")
+
+console.log(strokeBtn)
 
 const setUpCanvas = () => {
     const { width: canvasWidth, height: canvasHeight } = canvasContainer.getBoundingClientRect();
@@ -25,7 +29,29 @@ window.addEventListener("resize", () => {
 })
 
 const handleMouseMove = (e) => {
-    console.log("mouse moving");
+    console.log(e);
+    if(!e.target.classList.contains("canvas-color-boxes")) return;
+
+    if(isErasing) {
+        eraseBox(e)
+    }else{
+        colorBox(e)
+    }
+}
+
+const colorBox = (e) => {
+    e.target.style.backgroundColor = COLOR;
+}
+
+const eraseBox = (e) => {
+    eraser.style.left = e.clientX - eraser.clientWidth / 2 + "px";
+    eraser.style.top = e.clientY - eraser.clientHeight / 2 + "px";
+    e.target.style.backgroundColor = "white";
+
+    /*const boxes = document.querySelectorAll(".canvas-color-boxes")
+    for(const box of boxes){
+        const {left, right, top, bottom} = box.getBoundingClientRect()
+    }*/
 }
 
 const handleMouseUp = (e) => {
@@ -41,3 +67,6 @@ const handleMouseDown = (e) => {
 }
 
 canvasContainer.addEventListener("mousedown", handleMouseDown)
+
+strokeBtn.addEventListener("click", (e) => isErasing = false)
+eraserBtn.addEventListener("click", (e) => isErasing = true)
